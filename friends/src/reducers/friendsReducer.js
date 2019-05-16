@@ -1,10 +1,11 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, FETCH_FRIENDS_FAIL, FETCH_FRIENDS_SUCCESS, FETCH_FRIENDS_START } from "../actions";
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, FETCH_FRIENDS_FAIL, FETCH_FRIENDS_SUCCESS, FETCH_FRIENDS_START, POST_FRIENDS_START, POST_FRIENDS_SUCCESS } from "../actions";
 
 const initialState = {
   friends: [],
   fetchingFriends: false,
   isLogginIn: false,
-  error: ''
+  error: '',
+  savingFriends: false
 };
 export const friendsReducer = (state = initialState, action) => {
     // console.log(action)
@@ -32,6 +33,17 @@ export const friendsReducer = (state = initialState, action) => {
           fetchingFriends: false, 
           error: '', 
           friends: action.payload
+      }
+      case POST_FRIENDS_START:
+      return {
+          ...state,
+        savingFriends: true,
+      }
+      case POST_FRIENDS_SUCCESS:
+      return {
+          ...state,
+          savingFriends: false,
+          friends: action.data
       }
     default:
       return state;

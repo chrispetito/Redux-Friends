@@ -13,7 +13,7 @@ import { createStore, applyMiddleware } from "redux";
 const store = createStore(
     rootReducer,
     /* applyMiddleware goes here */
-    applyMiddleware(logger, thunk)
+    applyMiddleware(thunk, logger)
   );
 
 ReactDOM.render(

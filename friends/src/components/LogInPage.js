@@ -29,10 +29,10 @@ class LogInPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.login}>
-          <input name="username" value={this.state.credentials.username} onChange={this.handleChanges}/>
-          <input name="password" value={this.state.credentials.password} onChange={this.handleChanges}/>
+      <div className='login-container'>
+        <form className='login-form' onSubmit={this.login}>
+          <input placeholder='Username' name="username" value={this.state.credentials.username} onChange={this.handleChanges}/>
+          <input placeholder='Password' name="password" value={this.state.credentials.password} onChange={this.handleChanges}/>
           <button >Log In</button>
         </form>
       </div>

@@ -5,7 +5,7 @@ const initialState = {
   fetchingFriends: false,
   isLogginIn: false,
   error: '',
-  savingFriends: false
+  addingFriends: false
 };
 export const friendsReducer = (state = initialState, action) => {
     // console.log(action)
@@ -37,13 +37,14 @@ export const friendsReducer = (state = initialState, action) => {
       case POST_FRIENDS_START:
       return {
           ...state,
-        savingFriends: true,
+          addingFriends: true,
       }
       case POST_FRIENDS_SUCCESS:
       return {
           ...state,
-          savingFriends: false,
-          friends: action.data
+          addingFriends: false,
+          error: '',
+          friends: action.payload
       }
     default:
       return state;

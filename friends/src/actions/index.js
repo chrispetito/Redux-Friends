@@ -44,11 +44,14 @@ export const POST_FRIENDS_FAIL = 'POST_FRIENDS_FAIL';
 
 export const postFriends = friend => dispatch => {
     dispatch({ type: POST_FRIENDS_START});
-    return axios
+    axiosWithAuth()
     .post(`http://localhost:5000/api/friends/`, friend)
     .then(res => {
-        debugger;
+        // debugger;
         console.log(res)
-        dispatch({ type: POST_FRIENDS_SUCCESS, payload: res.data.payload })
+        dispatch({ type: POST_FRIENDS_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+        console.log(err)
     })
 }

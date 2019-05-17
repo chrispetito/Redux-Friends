@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { getFriends, postFriends } from "../actions";
+import FriendForm from "./FriendForm";
 
 class FriendsList extends React.Component {
     state = {
@@ -43,10 +44,7 @@ class FriendsList extends React.Component {
             </div> 
           )
         })}
-        {/* <form onSubmit={this.addFriend}>
-        <input name='name' value={this.state.friend.name} onChange={this.handleChanges}></input>
-        <button>Add Friend</button>
-        </form> */}
+        <FriendForm />
       </div>
     );
   }
@@ -54,8 +52,7 @@ class FriendsList extends React.Component {
 
 const mapStateToProps = state => ({
   friends: state.friendsReducer.friends,
-  fetchingFriends: state.friendsReducer.fetchingFriends,
-  savingFriends: state.friendsReducer.savingFriends
+  fetchingFriends: state.friendsReducer.fetchingFriends
 });
 
 export default withRouter(
